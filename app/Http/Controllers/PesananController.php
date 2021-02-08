@@ -21,26 +21,25 @@ class PesananController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Pesanan::create([
+            'nama' => request('nama'),
+            'email' => request('email'),
+            'alamat' => request('alamat'),
+            'barang' => request('barang'),
+            'jumlah' => request('jumlah'),
+        ]);
+
+        return redirect()->route('data.pesanan')->with('berhasil', 'Barang telah berhasil dipesan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pesanan  $pesanan
-     * @return \Illuminate\Http\Response
-     */
     public function show(Pesanan $pesanan)
     {
-        //
+        return view('admin.pesanan', [
+            'judul' => 'Detail Pesanan',
+            'pesanan' => Pesanan::all()
+        ]);
     }
 
     /**

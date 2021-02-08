@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PesananController;
+use App\Http\Controllers\{BarangController, HomeController, PesananController};
 use Illuminate\Support\Facades\{Auth, Route};
 
 /*
@@ -22,11 +20,12 @@ Auth::routes();
 //     return view('welcome');
 // });
 Route::get('/', [PesananController::class, 'index'])->name('data.pesanan');
+Route::post('/', [PesananController::class, 'store'])->name('data.beli');
 
 
-Route::prefix('/')->group(function () {
-    Route::get('barang', [PesananController::class, 'index'])->name('data.pesanan');
-});
+// Route::prefix('/')->group(function () {
+//     Route::get('barang', [PesananController::class, 'index'])->name('data.pesanan');
+// });
 
 Route::middleware('auth')->group(function () {
     Route::prefix('data-barang')->group(function () {
@@ -37,4 +36,5 @@ Route::middleware('auth')->group(function () {
         Route::put('{barang:slug}/ubah', [BarangController::class, 'update']);
         Route::delete('{barang:slug}/hapus', [BarangController::class, 'destroy'])->name('hapus.barang');
     });
+    Route::get('pesanan', [PesananController::class, 'show'])->name('pesanan');
 });
