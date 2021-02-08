@@ -9,7 +9,10 @@
         @foreach ($barang as $item)  
         <div class="col-md-3">
             <div class="card mb-3">
-                <div class="card-header">
+                <div style="height: 180px; overflow: hidden;">
+                    <img src="{{ asset('storage/' . $item->gambar) }}" class="w-100 h-100 d-block" style="object-fit: contain;">
+                </div>
+                <div class="card-footer">
                     <div class="d-flex justify-content-between">
                         <div>
                             <h5 class="">{{ $item->nama }}</h5>
@@ -19,9 +22,6 @@
                             <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#data">Beli</a>
                         </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto impedit id consequatur.
                 </div>
             </div>
         </div>
