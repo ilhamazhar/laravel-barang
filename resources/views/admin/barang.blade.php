@@ -13,6 +13,7 @@
                 <th>Nama</th>
                 <th>Kuantitas</th>
                 <th>Harga</th>
+                <th>Gambar</th>
                 <th>Aksi</th>
             </tr>
             </thead>
@@ -24,6 +25,11 @@
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->kuantitas }}</td>
                     <td>{{ $item->harga }}</td>
+                    <td>
+                        <div style="height: 90px; width: 70px; overflow: hidden;">
+                            <img src="{{ asset('storage/'. $item->gambar) }}" class="w-100 h-100 d-block" style="object-fit: contain;" alt="{{ asset('storage/'. $item->gambar) }}">
+                        </div>
+                    </td>
                     <td>
                         <a href="{{ route('ubah.barang', $item) }}" class="badge badge-pill badge-success">Ubah</a>
                         <form action="{{ route('hapus.barang', $item) }}" method="POST" class="d-inline">

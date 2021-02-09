@@ -15,14 +15,10 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
-                        <div>
-                            <h5 class="">{{ $item->nama }}</h5>
-                            <small class="">Sisa barang : <b>{{ $item->kuantitas }}</b></small> 
-                        </div>
-                        <div>
-                            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#data">Beli</a>
-                        </div>
+                        <h5 class="">{{ Str::limit($item->nama, 12) }}</h5>
+                        <p>Rp.{{ $item->harga }}</p>   
                     </div>
+                    <a href="row justify-content-end" class="btn btn-primary btn-block" data-toggle="modal" data-target="#data">Beli</a>
                 </div>
             </div>
         </div>
